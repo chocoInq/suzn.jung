@@ -1,0 +1,25 @@
+
+<div id="contact">
+  <div class="inner">
+    <h1 class="title">Comment me!</h1>
+    <div class="input-form">
+      <%= form_tag("/write", method: "post") do %>
+      <input type="text" name="name" placeholder="Name">
+      <input type="text" name="message" placeholder="Message">
+      <button>SEND MESSAGE</button>
+      <% end %>
+    </div>
+    <% @comments.each do |comment| %>
+    <div class="comment">
+      <img src="/img/guest.png">
+      <h1>
+        <%= comment.name %>
+        <span><%= comment.created_at.localtime.strftime("%I:%M %p - %B %e, %Y") %></span>
+      </h1>
+      <p>
+        <%= comment.content %>
+      </p>
+    </div>
+    <% end %>
+  </div>
+</div>
